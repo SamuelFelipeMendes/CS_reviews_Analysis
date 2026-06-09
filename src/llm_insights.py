@@ -60,6 +60,7 @@ def gerar_insights(df, resultados):
     """Usa Gemini com saida estruturada validada por Pydantic."""
     load_dotenv()
     api_key = os.getenv(GEMINI_API)
+    #api_key = ('AIzaSyDngPLiXkuXSij1fCM4fX8VMWJ3dfGnWQE')
     if not api_key:
         return _fallback_sem_llm(df, resultados)
 
@@ -76,6 +77,7 @@ def gerar_insights(df, resultados):
     {amostra}
     """
 
+    #client = genai.Client(api_key='AIzaSyDngPLiXkuXSij1fCM4fX8VMWJ3dfGnWQE')
     client = genai.Client(api_key=api_key)
     modelo = os.getenv("GEMINI_MODEL", GEMINI_MODEL)
     resposta = client.models.generate_content(

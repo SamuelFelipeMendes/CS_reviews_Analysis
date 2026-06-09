@@ -1,0 +1,36 @@
+{
+  "cliente": "Valve",
+  "problema_de_negocio": "Diminuição da satisfação do jogador e retenção devido à presença massiva de trapaceiros (hackers), problemas com o sistema anti-cheat e toxicidade na comunidade, impactando negativamente a experiência competitiva.",
+  "principais_temas": [
+    "Presença e impacto de hackers no jogo",
+    "Realismo e elementos positivos da jogabilidade",
+    "Sentimento misto sobre o jogo, com menções a recomendações e problemas de hackers",
+    "Percepção da própria habilidade e seu impacto na diversão",
+    "Engajamento com elementos de tiro e bomba para passar o tempo"
+  ],
+  "dores_dos_jogadores": [
+    "Incidência extremamente alta de hackers e cheaters, especialmente no modo Premier e competitivo geral",
+    "Ineficácia do sistema anti-cheat da Valve (VAC), considerado 'lixo' e 'inexistente'",
+    "Toxicidade e preconceito na comunidade, exemplificado por jogadores de língua espanhola que ofendem brasileiros",
+    "Desbalanceamento na jogabilidade que afeta a experiência",
+    "Percepção de que gastar dinheiro no 'Prime' não compensa devido à presença de trapaceiros",
+    "Saudade ou preferência por CS:GO em alguns aspectos"
+  ],
+  "pontos_positivos": [
+    "Experiência de jogo geralmente viciante, divertida e envolvente",
+    "Qualidade do jogo competitivo, apreciado pela sua seriedade e comunidade",
+    "Realismo da jogabilidade é um ponto forte",
+    "Potencial do jogo para ser um 'passatempo' agradável",
+    "Comunidade grande e parte dela é considerada 'legal'",
+    "Apesar das dificuldades pessoais ('sou ruim'), muitos ainda recomendam o jogo"
+  ],
+  "acoes_recomendadas": [
+    "Priorizar o desenvolvimento e aprimoramento urgente do sistema anti-cheat para combater eficazmente os hackers e restaurar a integridade do jogo competitivo.",
+    "Implementar e reforçar sistemas de moderação e punição para comportamentos tóxicos e preconceituosos, considerando opções de matchmaking baseadas em idioma ou região.",
+    "Avaliar e ajustar o balanceamento do jogo com base no feedback da comunidade para resolver as queixas de 'desbalanceado'.",
+    "Investir em comunicação transparente com a comunidade sobre as ações tomadas para resolver os problemas de cheaters e toxicidade.",
+    "Continuar a promover os pontos fortes do jogo, como o realismo e a profundidade competitiva, enquanto aborda as principais dores dos jogadores.",
+    "Incentivar a criação de conteúdo e o engajamento positivo da comunidade para mitigar a percepção negativa."
+  ],
+  "confianca": 0.95
+}
