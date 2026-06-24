@@ -9,7 +9,6 @@ from src.modelagem import treinar_modelos
 from src.preprocessamento import preparar_reviews
 
 
-
 BASE_DIR = Path(__file__).parent
 RAW_PATH = BASE_DIR / "data" / "raw" / "steam_cs2_reviews.csv"
 PROCESSED_PATH = BASE_DIR / "data" / "processado" / "steam_cs2_reviews_processado.csv"

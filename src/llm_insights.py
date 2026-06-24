@@ -4,6 +4,12 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from pydantic import BaseModel, Field, ValidationError
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+
 from config.config import GEMINI_API, GEMINI_MODEL
 
 
@@ -59,8 +65,7 @@ def _validar_resposta_gemini(resposta):
 def gerar_insights(df, resultados):
     """Usa Gemini com saida estruturada validada por Pydantic."""
     load_dotenv()
-    api_key = os.getenv(GEMINI_API)
-    #api_key = ('AIzaSyDngPLiXkuXSij1fCM4fX8VMWJ3dfGnWQE')
+    api_key = GEMINI_API
     if not api_key:
         return _fallback_sem_llm(df, resultados)
 
@@ -76,8 +81,6 @@ def gerar_insights(df, resultados):
     Amostra de avaliacoes:
     {amostra}
     """
-
-    #client = genai.Client(api_key='AIzaSyDngPLiXkuXSij1fCM4fX8VMWJ3dfGnWQE')
     client = genai.Client(api_key=api_key)
     modelo = os.getenv("GEMINI_MODEL", GEMINI_MODEL)
     resposta = client.models.generate_content(

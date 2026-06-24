@@ -1,0 +1,32 @@
+{
+  "cliente": "Valve",
+  "problema_de_negocio": "Manter a integridade competitiva do jogo e a satisfação dos jogadores em meio a problemas persistentes de trapaça, toxicidade e a percepção de que a monetização (skins) se tornou mais relevante que a experiência de jogo principal.",
+  "principais_temas": [
+    "Trapaça e cheaters",
+    "Comportamento tóxico e estresse dos jogadores",
+    "Qualidade fundamental e vício do jogo",
+    "Ineficácia do sistema Prime",
+    "Impacto da economia de skins na percepção do jogo",
+    "Nostalgia e legado versus experiência atual"
+  ],
+  "dores_dos_jogadores": [
+    "A experiência de jogo é constantemente arruinada por cheaters e hackers.",
+    "O ambiente do jogo é estressante e tóxico, levando a raiva e frustração.",
+    "O sistema Prime, pago para melhorar as partidas, é percebido como ineficaz e não resolve o problema dos trapaceiros.",
+    "Há uma sensação de que a economia de skins é mais importante para a Valve do que a integridade e a diversão do jogo.",
+    "Frustração com a queda da integridade competitiva e a dependência da nostalgia do passado."
+  ],
+  "pontos_positivos": [
+    "A base do jogo (FPS) é considerada 'muito boa', 'melhor da história' e 'viciante' por grande parte dos jogadores.",
+    "Mesmo com problemas, muitos jogadores continuam engajados e acham o jogo divertido e bacana.",
+    "O jogo tem um forte legado e uma base de fãs leais, que o recomendam apesar das adversidades."
+  ],
+  "acoes_recomendadas": [
+    "Investir massivamente no sistema anti-cheat, tornando-o mais robusto e transparente, com comunicação clara sobre as ações tomadas contra trapaceiros.",
+    "Reavaliar e reformular o sistema Prime para garantir que ele entregue uma experiência de jogo significativamente melhor, justificando seu valor aos jogadores.",
+    "Implementar e reforçar sistemas de moderação e denúncia para combater o comportamento tóxico, com punições mais eficazes para xingamentos e assédio.",
+    "Comunicar ativamente o compromisso da Valve com a integridade competitiva do jogo, mostrando que a experiência de gameplay é prioridade sobre a monetização de skins.",
+    "Explorar novos modos de jogo ou eventos que reforcem o foco na habilidade e na diversão pura, diminuindo a ênfase na economia de itens, para resgatar o espírito competitivo original."
+  ],
+  "confianca": 0.9
+}

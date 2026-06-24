@@ -1,0 +1,36 @@
+{
+  "cliente": "Valve",
+  "problema_de_negocio": "A percepção dos jogadores de que a integridade competitiva do jogo está comprometida devido à alta incidência de cheaters/hackers e à ineficácia do sistema Prime. Há também uma crescente frustração com a toxicidade da comunidade e o foco excessivo na economia de skins em detrimento da experiência de jogo principal.",
+  "principais_temas": [
+    "Cheaters e hackers",
+    "Toxicidade da comunidade (xingamentos, xenofobia)",
+    "Qualidade e diversão do jogo (FPS)",
+    "Estresse e frustração na experiência de jogo",
+    "Integridade competitiva e a eficácia do sistema Prime",
+    "Economia de skins e caixas de itens"
+  ],
+  "dores_dos_jogadores": [
+    "Alta incidência de cheaters, que arruínam a experiência competitiva e a diversão.",
+    "A ineficácia do sistema Prime, que não entrega a promessa de partidas mais limpas.",
+    "Comportamento tóxico da comunidade, incluindo xingamentos e xenofobia (ex: contra argentinos).",
+    "Estresse e raiva provocados pela experiência de jogo, resultando em frases como 'bem estressante, quando me estresso bato na minha vo'.",
+    "Sentimento de que o foco do jogo se deslocou para a economia de skins em vez da qualidade do gameplay.",
+    "Frustração com a sensação de que a integridade das partidas ficou em segundo plano.",
+    "Dificuldade em ter uma experiência limpa e justa, mesmo com jogadores pagando por sistemas como o Prime."
+  ],
+  "pontos_positivos": [
+    "O jogo é considerado 'muito bom', 'top', 'bacana' e 'ótimo' por grande parte dos jogadores.",
+    "É amplamente reconhecido como o 'melhor jogo de FPS que existe' e 'melhor FPS que eu já joguei'.",
+    "Muitos o consideram viciante e divertido, apesar dos problemas.",
+    "Há um forte apego ao legado e à nostalgia do Counter-Strike, o que mantém muitos jogadores engajados."
+  ],
+  "acoes_recomendadas": [
+    "Reforçar urgentemente o sistema anti-cheat e comunicar de forma transparente as melhorias para restaurar a confiança dos jogadores.",
+    "Reavaliar e aprimorar o sistema Prime para garantir que ele realmente ofereça uma experiência superior, livre de cheaters.",
+    "Implementar ferramentas mais eficazes de moderação e penalidades para combater a toxicidade e o comportamento inadequado na comunidade, incluindo a xenofobia.",
+    "Promover campanhas e recursos dentro do jogo que incentivem o fair play e o respeito entre os jogadores.",
+    "Comunicar a visão da Valve sobre o equilíbrio entre a experiência de jogo principal e a economia de skins, garantindo aos jogadores que o foco na integridade competitiva permanece prioritário.",
+    "Considerar melhorias de qualidade de vida e conteúdo que reforcem o gameplay e a diversão, além das atualizações de skins."
+  ],
+  "confianca": 0.9
+}

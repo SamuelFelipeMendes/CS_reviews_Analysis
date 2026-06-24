@@ -30,6 +30,7 @@ def treinar_modelos(df):
         indices = centroide.argsort()[-8:][::-1]
         topicos[f"topico_{i}"] = [termos[j] for j in indices]
 
+
     return {
         "acuracia": accuracy_score(y_test, pred),
         "relatorio_classificacao": classification_report(y_test, pred, zero_division=0),
