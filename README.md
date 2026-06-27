@@ -87,8 +87,3 @@ Saidas geradas:
 - `data/processado/steam_cs2_reviews_processado.csv`
 - `data/processado/relatorio_insights.txt`
 
-## Cliente ficticio
-
-Gestor de produto/comunidade do Counter-Strike 2 interessado em entender reclamacoes,
-elogios e prioridades de melhoria a partir das avaliacoes dos jogadores em portugues.
->>>>>>> 4a138dda4d6e02e95ae7a3e9ce821811881a0f4d
