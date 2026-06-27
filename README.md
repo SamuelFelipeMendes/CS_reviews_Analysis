@@ -45,3 +45,18 @@ Saidas geradas:
 
 Gestor de produto/comunidade do Counter-Strike 2 interessado em entender reclamacoes,
 elogios e prioridades de melhoria a partir das avaliacoes dos jogadores em portugues.
+
+## Custos Previstos com LLM (Pipeline de 1000 elementos)
+
+*Premissas para o cálculo:* 
+Consideramos a sumarização e rotulação de clusters de reviews da Steam. 
+Média estimada: **200 tokens de input** (contexto do cluster/prompt) e **50 tokens de output** (JSON estruturado via Pydantic) por requisição.
+Total para 1000 chamadas: **200.000 tokens de Input** e **50.000 tokens de Output**.
+
+| Modelo Utilizado | Custo Input (por 1M) | Custo Output (por 1M) | Custo Total Estimado (1000 reqs) |
+| :--- | :--- | :--- | :--- |
+| **gemini-2.5-flash** | ~$0.075 | ~$0.30 | **~$0.03** |
+| **gemini-3-flash-preview** | ~$0.15 | ~$0.60 | **~$0.06** |
+| **gemini-3.1-pro-preview** | ~$3.50 | ~$10.50 | **~$1.22** |
+
+*Conclusão:* Para este pipeline, os modelos da família Flash são extremamente viáveis para produção devido ao baixo custo e alta velocidade, sendo suficientes para a tarefa de extração estruturada de rotulação. O modelo Pro seria utilizado apenas caso a análise semântica exigisse inferência complexa ou cruzamento de jurisprudência.
