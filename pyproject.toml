@@ -1,3 +1,24 @@
+<<<<<<< HEAD
+[project]
+name = "trabalho-final"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "joblib>=1.3",
+    "matplotlib>=3.7",
+    "numpy>=1.24",
+    "google-genai>=1.0",
+    "pandas>=2.0",
+    "pydantic>=2.0",
+    "python-dotenv>=1.0",
+    "requests>=2.31",
+    "scikit-learn>=1.3",
+    "seaborn>=0.13",
+    "sentence-transformers>=3.0",
+]
+=======
 [project]
 name = "trabalho-final"
 version = "0.1.0"
@@ -16,3 +37,4 @@ dependencies = [
     "scikit-learn>=1.3",
     "seaborn>=0.13",
 ]
+>>>>>>> 4a138dda4d6e02e95ae7a3e9ce821811881a0f4d

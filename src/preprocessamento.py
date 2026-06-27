@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+def preparar_reviews(df):
+    if df.empty or "texto" not in df.columns:
+        return df.copy()
+
+    dados = df.copy()
+    dados["texto_modelo"] = dados["texto"].fillna("").astype(str).str.strip()
+    dados = dados[dados["texto_modelo"].str.len() > 0]
+    dados["sentimento"] = dados["recomendado"].map({True: "positivo", False: "negativo"})
+    return dados.reset_index(drop=True)
+=======
 import re
 
 
@@ -26,3 +37,4 @@ def preparar_reviews(df):
     dados = dados[dados["texto_limpo"].str.len() > 5]
     dados["sentimento"] = dados["recomendado"].map({True: "positivo", False: "negativo"})
     return dados.reset_index(drop=True)
+>>>>>>> 4a138dda4d6e02e95ae7a3e9ce821811881a0f4d
