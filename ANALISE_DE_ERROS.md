@@ -13,7 +13,7 @@
 3.  **Erro de Clusterização (K-Means)**
     *   *Falha:* O K-Means misturou reclamações técnicas (queda de FPS) com problemas de rede (lag/ping alto) no mesmo cluster.
     *   *Hipótese de causa:* K-Means tende a criar clusters esféricos de tamanhos similares, o que não reflete a densidade real dos problemas técnicos.
-    *   *Ação proposta:* Utilizar o algoritmo HDBSCAN, que se mostrou superior ao separar melhor nichos de alta densidade sem forçar fronteiras artificiais.
+    *   *Ação proposta:* Utilizar o algoritmo HDBSCAN, que se mostrou superior ao separar melhor nichos de alta densidade sem forçar fronteiras artificiais. O HDBSCAN atuou como um filtro de qualidade, entregando para o LLM apenas as reviews que realmente continham discussões densas e estruturadas sobre o jogo, economizando tokens e evitando alucinações.
 
 4.  **Alucinação do LLM**
     *   *Falha:* O LLM nomeou um cluster de reclamações como "Problemas com a campanha Single Player", sendo que CS2 é um jogo puramente Multiplayer.
