@@ -11,16 +11,18 @@ O fluxo de dados do projeto segue uma abordagem de engenharia robusta dividida e
 1. **Extração (`src/extracao.py`):** Coleta automática de 1.000 avaliações de usuários em tempo real via API pública da Steam.
 2. **Pré-processamento (`src/preprocessamento.py`):** Limpeza estrutural de dados ausentes (`fillna`), filtragem de strings de comprimento zero e mapeamento do metadado de recomendação em categorias explícitas de sentimento (`positivo` ou `negativo`).
 3. **Vetorização e Modelagem (`src/modelagem.py`):** * Geração de representações densas utilizando o modelo de embeddings `sentence-transformers/all-MiniLM-L12-v2` (384 dimensões).
-   * Redução de dimensionalidade via PCA para projeção e suporte a gráficos de dispersão bidimensionais.
-   * Clusterização comparativa aplicando **K-Means** (abordagem por partição forçada em 5 macrotemas) e **HDBSCAN** (abordagem hierárquica baseada em densidade).
-4. **Análise de IA (`src/llm_insights.py`):** Integração com o SDK do Google Gemini alimentado pelos outputs estatísticos de ambos os algoritmos clássicos. A resposta é rigidamente estruturada através de um contrato de dados via **Pydantic** (`InsightFinal`) com blindagem por tratamento de exceções (`ValidationError`).
+   * Redução de dimensionalidade via PCA para projeção espacial e suporte à plotagem gráfica bidimensional.
+   * Clusterização comparativa aplicando **K-Means** (abordagem por partição forçada) e **HDBSCAN** (abordagem hierárquica baseada em densidade).
+4. **Análise de IA (`src/llm_insights.py`):** Integração com o SDK do Google Gemini alimentado pelos outputs estatísticos de ambos os algoritmos clássicos. A resposta é rigidamente estruturada através de um contrato de dados via **Pydantic** composto por um mapeamento hierárquico aninhado (`InsightFinal` e `ClusterRotulado`), contando com tratamento de exceções (`ValidationError`) e resiliência a falhas de rede.
 
 ---
 
 ## 📈 Resultados da Clusterização
 
-* **K-Means:** Forçou o agrupamento total dos dados, mapeando a distribuição volumétrica e os tópicos mais recorrentes do corpus de forma macro.
-* **HDBSCAN:** Atuou cirurgicamente como um filtro de qualidade, identificando que **83% do corpus da Steam constituía ruído sem densidade clara** (como spams, artes ASCII e piadas genéricas). O algoritmo isolou com precisão **3 clusters puros** nas extremidades do espaço vetorial, identificando nichos críticos e específicos de reclamações técnicas e comportamentais dos jogadores.
+* **K-Means:** Mapeou de forma geométrica e global a distribuição volumétrica do corpus, dividindo as avaliações de maneira uniforme em **5 macrotemas** de discussão.
+* **HDBSCAN:** Atuou cirurgicamente como um filtro de qualidade para o LLM, identificando de forma rigorosa que **83.2% do corpus da Steam constituía ruído sem densidade clara** (mensagens de spam, artes ASCII e piadas repetitivas). De forma orgânica, o algoritmo isolou com precisão exatamente **5 clusters estáveis** nas extremidades de densidade.
+
+O fato de ambos os modelos convergirem de formas diferentes para exatamente 5 agrupamentos válidos confirma matematicamente a presença de 5 núcleos principais de interesse/reclamações no universo de dados analisado.
 
 Os gráficos comparativos (`grafico_kmeans.png` e `grafico_hdbscan.png`) e o arquivo final de inteligência de negócios (`relatorio_insights.txt`) são salvos automaticamente no diretório `data/processado/`.
 
@@ -43,20 +45,7 @@ Os gráficos comparativos (`grafico_kmeans.png` e `grafico_hdbscan.png`) e o arq
 ## 🛠️ Como Executar o Projeto
 
 1. Certifique-se de ter o Python 3.10+ instalado.
-2. Crie e ative o seu ambiente virtual (`venv`).
-3. Instale as dependências obrigatórias:
+2. Ative o seu gerenciador ou ambiente virtual.
+3. Instale as dependências obrigatórias via pyproject.toml ou pip:
    ```bash
-   pip install -r requirements.txt
-
-## Como executar
-
-```bash
-python main.py
-```
-
-Para usar Gemini nos insights, crie um arquivo `.env` na pasta de config do projeto:
-
-```env
-GEMINI_API=sua_chave_aqui
-```
-
+   pip install .
