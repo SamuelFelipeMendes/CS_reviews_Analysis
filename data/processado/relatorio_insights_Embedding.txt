@@ -1,0 +1,118 @@
+{
+  "cliente": "Valve",
+  "problema_de_negocio": "Manter a base de jogadores engajada e satisfeita, mitigando problemas críticos como a presença de trapaceiros, a toxicidade da comunidade e o impacto de mudanças na economia de itens in-game, que afetam a percepção de valor e o investimento dos jogadores. Além disso, abordar questões de otimização e bugs para garantir uma experiência de jogo consistente e de alta qualidade.",
+  "clusters_rotulados": [
+    {
+      "modelo": "kmeans",
+      "cluster_id": 2,
+      "rotulo": "Entusiastas do Gameplay Viciante",
+      "caracteristicas_chave": [
+        "Gameplay viciante",
+        "diversão intensa",
+        "ação frenética",
+        "prazer imediato"
+      ],
+      "insight_acionavel": "Alavancar o aspecto viciante e divertido do gameplay em campanhas de marketing, utilizando depoimentos de jogadores que expressam essa 'dopamina gratuita'. Considerar eventos ou modos de jogo temporários que intensifiquem ainda mais essa sensação.",
+      "relevancia": "Média"
+    },
+    {
+      "modelo": "kmeans",
+      "cluster_id": 1,
+      "rotulo": "Satisfeitos Genéricos",
+      "caracteristicas_chave": [
+        "Satisfação geral",
+        "experiência aceitável",
+        "bom",
+        "legal"
+      ],
+      "insight_acionavel": "Realizar pesquisas qualitativas com amostras desse grupo para entender os motivadores da satisfação básica e identificar oportunidades de melhoria que possam transformar essa satisfação genérica em engajamento mais profundo e advocacia.",
+      "relevancia": "Baixa"
+    },
+    {
+      "modelo": "kmeans",
+      "cluster_id": 4,
+      "rotulo": "Jogadores Engajados e Críticos: Cheaters, Toxicidade e Economia de Skins",
+      "caracteristicas_chave": [
+        "Cenário competitivo de alto nível",
+        "economia de skins",
+        "epidemia de cheaters",
+        "comunidade tóxica",
+        "desvalorização de itens",
+        "otimização e bugs",
+        "update de outubro/2025"
+      ],
+      "insight_acionavel": "Priorizar urgentemente o investimento no sistema anti-cheat e na moderação da comunidade para combater cheaters e toxicidade. Reavaliar e comunicar de forma transparente as políticas econômicas relacionadas a skins (especialmente após o update de outubro/2025) para restaurar a confiança dos jogadores investidores. Melhorar a otimização e corrigir bugs para atender às expectativas de jogadores 'hardcore'.",
+      "relevancia": "Alta"
+    },
+    {
+      "modelo": "hdbscan",
+      "cluster_id": 1,
+      "rotulo": "Defensores Entusiasmados",
+      "caracteristicas_chave": [
+        "Altamente recomendado",
+        "muito bom",
+        "satisfação elevada",
+        "jogo excelente"
+      ],
+      "insight_acionavel": "Identificar e nutrir esses jogadores entusiastas, talvez através de programas de embaixadores ou acesso antecipado a conteúdo, incentivando-os a compartilhar suas experiências positivas e a fornecer feedback construtivo detalhado.",
+      "relevancia": "Média"
+    },
+    {
+      "modelo": "hdbscan",
+      "cluster_id": 2,
+      "rotulo": "Satisfação Básica Consistente",
+      "caracteristicas_chave": [
+        "Bom",
+        "positiva",
+        "desempenho aceitável"
+      ],
+      "insight_acionavel": "Manter a qualidade e consistência que agrada a este grupo. Embora 'bom' seja um feedback genérico, ele estabelece um piso de qualidade. Pequenas melhorias focadas na experiência central podem convertê-los em defensores mais ativos.",
+      "relevancia": "Baixa"
+    },
+    {
+      "modelo": "hdbscan",
+      "cluster_id": 0,
+      "rotulo": "Experiência Superior ('Top')",
+      "caracteristicas_chave": [
+        "Melhor experiência",
+        "jogo de alta qualidade",
+        "topo",
+        "excelência"
+      ],
+      "insight_acionavel": "Analisar as características que levam a essa percepção de 'top', que pode estar ligada a momentos específicos de gameplay, balanceamento ou inovações. Destacar esses pontos fortes em comunicações e buscar replicá-los ou aprimorá-los em outras áreas do jogo.",
+      "relevancia": "Média"
+    }
+  ],
+  "principais_temas": [
+    "Vício e adrenalina do gameplay competitivo",
+    "Economia de skins e mercado de itens",
+    "Presença de trapaceiros (cheaters)",
+    "Toxicidade da comunidade e matchmaking",
+    "Otimização e bugs de desempenho do jogo",
+    "Satisfação geral com o produto"
+  ],
+  "dores_dos_jogadores": [
+    "Epidemia de cheaters e a ineficácia do anti-cheat atual, que arruínam a experiência competitiva.",
+    "Comunidade tóxica e 'haters' que causam frustração e desengajamento.",
+    "Desvalorização do mercado de skins e itens cosméticos devido a mudanças nas políticas da Valve (ex: atualização de outubro/2025), resultando em perdas financeiras para jogadores investidores.",
+    "Problemas de otimização e bugs de desempenho persistentes, impactando a fluidez do jogo.",
+    "Sentimento de 'passar raiva' e estresse, mesmo gostando do jogo, devido aos problemas mencionados."
+  ],
+  "pontos_positivos": [
+    "Cenário competitivo de Counter-Strike é considerado o 'padrão de ouro' dos FPS, com alta adrenalina e teto de habilidade.",
+    "O mercado de skins da Steam é valorizado pela liquidez e potencial de valorização (antes das mudanças recentes).",
+    "Gameplay viciante que gera 'dopamina gratuita' e mantém os jogadores engajados.",
+    "Gráficos e sistema de fumaça do CS2 são elogiados.",
+    "Reconhecimento como um jogo histórico, clássico e com uma base de fãs fiel.",
+    "Experiência geral frequentemente descrita como 'bom', 'excelente' ou 'top'."
+  ],
+  "acoes_recomendadas": [
+    "Implementar um sistema anti-cheat mais robusto e transparente, com punições mais severas e visíveis para trapaceiros, e comunicar ativamente os progressos à comunidade.",
+    "Revisitar as políticas de contrato e fabricação de itens no mercado de skins, buscando estabilizar a economia e restaurar a confiança dos jogadores investidores, possivelmente com compensações ou novas oportunidades de valor.",
+    "Desenvolver e aplicar medidas mais eficazes para combater a toxicidade na comunidade, incluindo melhorias no sistema de denúncias e ferramentas de moderação mais proativas.",
+    "Priorizar o roadmap de otimização do jogo e a correção de bugs, fornecendo atualizações regulares e transparentes sobre o progresso para a comunidade.",
+    "Criar canais de feedback mais diretos e eficazes para que os jogadores possam reportar problemas e sugerir melhorias, sentindo-se ouvidos e valorizados.",
+    "Investir em campanhas de comunicação que reforcem os aspectos positivos e únicos do gameplay e do competitivo de CS, enquanto demonstram o compromisso da Valve em resolver os problemas críticos apontados."
+  ],
+  "confianca": 0.9
+}

@@ -1,0 +1,132 @@
+{
+  "cliente": "Valve",
+  "problema_de_negocio": "Compreender o sentimento dos jogadores e identificar as principais dores e pontos positivos em Counter-Strike 2 para guiar melhorias no produto e estratégias de retenção.",
+  "clusters_rotulados": [
+    {
+      "modelo": "kmeans",
+      "cluster_id": 2,
+      "rotulo": "Experiência de Jogo Fundamental e Viciante",
+      "caracteristicas_chave": [
+        "jogo",
+        "bom",
+        "de",
+        "melhor",
+        "muito",
+        "mas",
+        "que",
+        "tem"
+      ],
+      "insight_acionavel": "Alavancar a narrativa de que o CS2 é um jogo 'excelente' e 'viciante' em campanhas de marketing, focando na gameplay central e na sensação de 'dopamina gratuita' que os jogadores relatam.",
+      "relevancia": "Muito Alta"
+    },
+    {
+      "modelo": "kmeans",
+      "cluster_id": 1,
+      "rotulo": "Satisfação Geral e Recomendação",
+      "caracteristicas_chave": [
+        "legal",
+        "sim",
+        "good",
+        "recomendo",
+        "foda",
+        "daora",
+        "gg",
+        "massa"
+      ],
+      "insight_acionavel": "Incentivar e facilitar que os jogadores expressem sua satisfação e recomendem o jogo a amigos, através de programas de indicação ou campanhas que capitalizem no boca a boca positivo.",
+      "relevancia": "Alta"
+    },
+    {
+      "modelo": "kmeans",
+      "cluster_id": 4,
+      "rotulo": "Críticas: Cheaters, Economia e Performance",
+      "caracteristicas_chave": [
+        "de",
+        "que",
+        "jogo",
+        "hack",
+        "um",
+        "tem",
+        "em",
+        "uma"
+      ],
+      "insight_acionavel": "Priorizar urgentemente o desenvolvimento e implementação de um anti-cheat mais robusto. Reavaliar e comunicar as mudanças na economia de itens para mitigar a insatisfação e restaurar a confiança dos investidores de skins. Otimizar a performance do jogo e corrigir bugs para garantir uma experiência fluida.",
+      "relevancia": "Muito Alta"
+    },
+    {
+      "modelo": "hdbscan",
+      "cluster_id": 1,
+      "rotulo": "Elogios Diretos e Entusiastas",
+      "caracteristicas_chave": [
+        "muito bom",
+        "muito",
+        "bom",
+        "jogo",
+        "jogo muito",
+        "bom jogo",
+        "jogo bom",
+        "bom recomendo"
+      ],
+      "insight_acionavel": "Destacar a qualidade percebida do jogo e a satisfação direta dos jogadores em materiais promocionais, usando frases como 'muito bom' e 'recomendo' para atrair novos públicos.",
+      "relevancia": "Média"
+    },
+    {
+      "modelo": "hdbscan",
+      "cluster_id": 2,
+      "rotulo": "Apreciação Concisa e Positiva",
+      "caracteristicas_chave": [
+        "bom",
+        "bom dms",
+        "dms",
+        "bem"
+      ],
+      "insight_acionavel": "Manter a consistência na experiência do jogo para preservar a base de jogadores que encontram satisfação na simplicidade da jogabilidade e na execução de alta qualidade.",
+      "relevancia": "Baixa"
+    },
+    {
+      "modelo": "hdbscan",
+      "cluster_id": 0,
+      "rotulo": "Entusiasmo Genuíno ('Top')",
+      "caracteristicas_chave": [
+        "top",
+        "top top",
+        "top demais",
+        "demais"
+      ],
+      "insight_acionavel": "Engajar a comunidade que expressa entusiasmo com termos como 'top' em plataformas de mídia social e eventos, celebrando a paixão dos jogadores e amplificando o buzz positivo.",
+      "relevancia": "Baixa"
+    }
+  ],
+  "principais_temas": [
+    "Experiência competitiva e viciante",
+    "Problemas com cheaters e toxicidade",
+    "Impacto das mudanças na economia de skins",
+    "Otimização e bugs de desempenho",
+    "Satisfação geral e recomendação"
+  ],
+  "dores_dos_jogadores": [
+    "Prevalência de cheaters no matchmaking público",
+    "Comunidade tóxica e 'haters'",
+    "Desvalorização de itens e prejuízo no mercado de skins após atualizações",
+    "Bugs e problemas de desempenho/otimização",
+    "Experiência de jogo que causa estresse e raiva",
+    "Desequilíbrio de times nas partidas"
+  ],
+  "pontos_positivos": [
+    "Cenário competitivo considerado 'padrão de ouro' em FPS",
+    "Gameplay viciante e envolvente",
+    "Aspectos sociais e trabalho em equipe",
+    "Qualidade dos gráficos e sistema de fumaça (CS2)",
+    "Legado e fidelidade à franquia Counter-Strike",
+    "'Dopamina gratuita' e diversão"
+  ],
+  "acoes_recomendadas": [
+    "Implementar um sistema anti-cheat mais eficaz e transparente para restaurar a confiança dos jogadores.",
+    "Revisar as políticas de economia de skins e se comunicar proativamente com a comunidade sobre futuras mudanças para mitigar o descontentamento.",
+    "Priorizar a otimização de desempenho e a correção de bugs para garantir uma experiência de jogo estável e fluida para todos os usuários.",
+    "Desenvolver iniciativas para combater a toxicidade na comunidade, promovendo um ambiente de jogo mais saudável.",
+    "Capitalizar o forte sentimento positivo e o caráter viciante do jogo em campanhas de marketing para atrair e reter novos jogadores.",
+    "Realizar pesquisas de satisfação focadas nas dores identificadas para obter feedback qualitativo mais aprofundado."
+  ],
+  "confianca": 0.85
+}

@@ -3,13 +3,11 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import HDBSCAN, KMeans
 from sklearn.decomposition import PCA
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import silhouette_score
 
 
 MODEL_NAME = "sentence-transformers/all-MiniLM-L12-v2"
 N_CLUSTERS = 5
-TOP_N_TERMOS = 8
 
 
 def _calcular_silhouette(embeddings, labels, ignorar_ruido=False):
@@ -24,31 +22,6 @@ def _calcular_silhouette(embeddings, labels, ignorar_ruido=False):
         return None
 
     return round(float(silhouette_score(embeddings, labels_serie)), 4)
-
-
-def _extrair_topicos(textos, labels):
-    topicos = {}
-    labels_serie = pd.Series(labels)
-    labels_validos = sorted(label for label in labels_serie.unique() if label != -1)
-
-    if not labels_validos:
-        return topicos
-
-    vectorizer = TfidfVectorizer(max_features=5000, ngram_range=(1, 2))
-    matriz = vectorizer.fit_transform(textos)
-    termos = vectorizer.get_feature_names_out()
-
-    for label in labels_validos:
-        indices = labels_serie[labels_serie == label].index
-        pesos_medios = matriz[indices].mean(axis=0).A1
-        melhores_indices = pesos_medios.argsort()[::-1][:TOP_N_TERMOS]
-        topicos[int(label)] = [
-            termos[i]
-            for i in melhores_indices
-            if pesos_medios[i] > 0
-        ]
-
-    return topicos
 
 
 def _resumo_clusters(labels):
@@ -96,34 +69,40 @@ def treinar_modelos(dados: pd.DataFrame) -> dict:
 
     n_positivas = dados["recomendado"].sum()
     n_negativas = (~dados["recomendado"]).sum()
-    topicos_kmeans = _extrair_topicos(textos, clusters_kmeans)
-    topicos_hdbscan = _extrair_topicos(textos, clusters_hdbscan)
     coordenadas_2d = _reduzir_embeddings_para_2d(embeddings)
+    silhouette_kmeans = _calcular_silhouette(embeddings, clusters_kmeans)
+    silhouette_hdbscan = _calcular_silhouette(
+        embeddings,
+        clusters_hdbscan,
+        ignorar_ruido=True,
+    )
 
     return {
         "embedding_model": MODEL_NAME,
         "coordenadas_2d": coordenadas_2d,
-        "topicos": topicos_kmeans,
         "modelos": {
             "kmeans": {
                 "clusters": clusters_kmeans.tolist(),
                 "quantidade_clusters": int(pd.Series(clusters_kmeans).nunique()),
                 "distribuicao_clusters": _resumo_clusters(clusters_kmeans),
-                "silhouette": _calcular_silhouette(embeddings, clusters_kmeans),
-                "topicos": topicos_kmeans,
+                "silhouette": silhouette_kmeans,
             },
             "hdbscan": {
                 "clusters": clusters_hdbscan.tolist(),
                 "quantidade_clusters": int(pd.Series(clusters_hdbscan)[pd.Series(clusters_hdbscan) != -1].nunique()),
                 "distribuicao_clusters": _resumo_clusters(clusters_hdbscan),
                 "percentual_ruido": round(float((clusters_hdbscan == -1).mean() * 100), 1),
-                "silhouette_sem_ruido": _calcular_silhouette(
-                    embeddings,
-                    clusters_hdbscan,
-                    ignorar_ruido=True,
-                ),
-                "topicos": topicos_hdbscan,
+                "silhouette": silhouette_hdbscan,
+                "silhouette_sem_ruido": silhouette_hdbscan,
             },
+        },
+        "comparacao_silhouette": {
+            "kmeans": silhouette_kmeans,
+            "hdbscan": silhouette_hdbscan,
+            "observacao": (
+                "No HDBSCAN, o silhouette e calculado sem os pontos de ruido (-1), "
+                "pois eles nao representam clusters."
+            ),
         },
         "comparacao_clusterizacao": (
             "KMeans forca todas as avaliacoes em grupos predefinidos; HDBSCAN encontra "

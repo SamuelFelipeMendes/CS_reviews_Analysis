@@ -63,6 +63,11 @@ def main():
     print(f"- Clusters KMeans: {resultados['modelos']['kmeans']['quantidade_clusters']}")
     print(f"- Silhouette KMeans: {resultados['modelos']['kmeans']['silhouette']}")
     print(f"- Clusters HDBSCAN: {resultados['modelos']['hdbscan']['quantidade_clusters']}")
+    silhouette_hdbscan = resultados["modelos"]["hdbscan"].get(
+        "silhouette",
+        resultados["modelos"]["hdbscan"].get("silhouette_sem_ruido"),
+    )
+    print(f"- Silhouette HDBSCAN: {silhouette_hdbscan}")
     print(f"- Ruido HDBSCAN: {resultados['modelos']['hdbscan']['percentual_ruido']}%")
     print(f"- Grafico KMeans: {KMEANS_PLOT_PATH}")
     print(f"- Grafico HDBSCAN: {HDBSCAN_PLOT_PATH}")

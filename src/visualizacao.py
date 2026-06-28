@@ -54,6 +54,7 @@ def gerar_graficos_clusterizacao(resultados, caminho_kmeans, caminho_hdbscan):
     coordenadas = resultados["coordenadas_2d"]
     kmeans = resultados["modelos"]["kmeans"]
     hdbscan = resultados["modelos"]["hdbscan"]
+    silhouette_hdbscan = hdbscan.get("silhouette", hdbscan.get("silhouette_sem_ruido"))
 
     _plotar_clusters(
         coordenadas=coordenadas,
@@ -73,7 +74,7 @@ def gerar_graficos_clusterizacao(resultados, caminho_kmeans, caminho_hdbscan):
         subtitulo=(
             f"{hdbscan['quantidade_clusters']} clusters | "
             f"ruido: {hdbscan['percentual_ruido']}% | "
-            f"silhouette sem ruido: {hdbscan['silhouette_sem_ruido']}"
+            f"silhouette: {silhouette_hdbscan}"
         ),
         caminho_saida=caminho_hdbscan,
     )
