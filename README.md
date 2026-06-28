@@ -47,3 +47,16 @@ Os gráficos comparativos (`grafico_kmeans.png` e `grafico_hdbscan.png`) e o arq
 3. Instale as dependências obrigatórias:
    ```bash
    pip install -r requirements.txt
+
+## Como executar
+
+```bash
+python main.py
+```
+
+Para usar Gemini nos insights, crie um arquivo `.env` na raiz do projeto:
+
+```env
+GEMINI_API_KEY=sua_chave_aqui
+```
+
