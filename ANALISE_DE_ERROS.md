@@ -1,6 +1,6 @@
 # Análise Estruturada de Erros
 
-Esta seção documenta o mapeamento crítico das falhas e anomalias identificadas ao longo da execução do pipeline, categorizadas conforme as diretrizes de avaliação da disciplina.
+Esta seção documenta como fizemos o mapeamento crítico das falhas e anomalias identificadas ao longo da execução do pipeline, categorizadas conforme as diretrizes de avaliação da disciplina.
 
 ---
 
