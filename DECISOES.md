@@ -1,37 +1,15 @@
-Decisões seguindo o pipeline dos Dados
+# Diário de Decisões do Projeto
 
-1_ Temática e Corpus: Utilizando um request de API da review de um jogo de uma plataforma chamada Steam, tudo vem a partir de um request feito pela chamada da API. Caso não haja comunicação da API, há uma função de fallback que faz com que o programa utilize um CSV previamente baixado. Por se tratar de uma quantidade muito extensa podemos escolher quantos passamos para o programa, escolhemos 1000.
+* **Temática e Corpus (Ingestão de Dados):** A coleta de dados é realizada de forma automatizada via requisições HTTP (`requests`) consumindo a API pública da Steam, tendo como alvo o jogo Counter-Strike 2 (CS2). Para garantir a resiliência e a continuidade do software em cenários de indisponibilidade de rede, foi implementada uma função de salvaguarda (*fallback*) que consome um arquivo estruturado `CSV` armazenado localmente em `data/raw/`. Visando o equilíbrio ideal entre representatividade estatística e eficiência computacional, o pipeline foi parametrizado para ingerir uma janela fixa de **1.000 avaliações**.
 
-2_ Pré-processamento: O pré-processamento foi extremamente simples, como criar uma analise de sentimento de forma artificial, utilizando a recomendação para definir o sentimentos da review foi positivo ou negativo e o tratamento de campo vazios e um filtro de registro com tamanho menor que zero. Devido ao modelo de embedding selecionado, não seria necessário técnicas de lematização, stemming ou StopWords. Como estamos usando um modelo que leva em consideração o contexto, praticamente tudo é relevante.
+* **Estratégia de Pré-processamento:** O script `preprocessamento.py` focou na higienização estrutural dos dados, tratando valores ausentes (`fillna`), eliminando strings vazias e aplicando filtros de comprimento de texto (`str.len() > 0`). Aproveitamos o metadado nativo da Steam (`recomendado`) para mapear de forma determinística a polaridade de sentimento de cada avaliação em `positivo` ou `negativo`. Devido à arquitetura profunda do modelo de embeddings baseado em mecanismos de atenção (Transformers), optou-se por **não** aplicar remoção de stopwords, stemming ou lematização, preservando gírias, jargões e o contexto completo dos textos informais dos jogadores.
 
-3_ Embedding e Modelo: Como escolha mais viável para a vetorização de texto para o embedding e treinamento do modelo, escolhemos o Sentence-Transformer, por causa da captura de texto mais informais e curtos, mas em grandes quantidades. Já a modelagem, seguimos a clusterização. Neste ponto, enviamos dois modelos, Kmeans e o HDBSCAN. Ambos trouxeram dados relevantes e com o silhouette score, avaliamos o mais eficiente no sentido dos agrupamentos.
+* **Modelo de Embedding escolhido:** Utilizamos o modelo denso pré-treinado **`sentence-transformers/all-MiniLM-L12-v2`**. Ele foi selecionado por gerar representações vetoriais robustas e compactas (384 dimensões), otimizando o cálculo de distância estrutural e densidade no pipeline de Machine Learning de maneira computacionalmente eficiente.
 
-3.1_ Escolha de modelos e redução de dimensionalidade: 
+* **Medida de Similaridade e Algoritmo:** Comparamos a clusterização por partição (KMeans) com a baseada em densidade hierárquica (HDBSCAN). O KMeans foi configurado de forma macro para mapear **5 clusters**, cobrindo o território global do corpus. Já o HDBSCAN mostrou-se superior para o refinamento qualitativo, pois identificou uma alta taxa de dispersão natural da comunidade gamer e isolou **83.2% do corpus como ruído (-1)**, extraindo de forma totalmente orgânica **3 clusters estáveis** de altíssima concentração e pureza semântica nas extremidades.
 
-Usamos PCA só para visualização, não para treinar os clusters.
-Os embeddings do sentence-transformers têm muitas dimensões. Por exemplo, o all-MiniLM-L12-v2 gera vetores com centenas de valores por texto. Isso é ótimo para KMeans e HDBSCAN, mas impossível de visualizar diretamente em um gráfico comum.
-Então a lógica é:
-Embeddings completos -> KMeans/HDBSCAN
-Embeddings completos -> PCA para 2D -> gráficos
-Ou seja, os modelos agrupam usando a representação completa. O PCA só transforma os embeddings em duas coordenadas:
-x, y
-para conseguirmos gerar gráficos como:
-grafico_kmeans.png
-grafico_hdbscan.png
-Por que reduzir dimensionalidade?
-Porque humanos conseguem interpretar visualmente 2D ou 3D, mas não conseguem olhar um vetor de centenas de dimensões. A redução permite ver, de forma aproximada:
-se os clusters parecem separados;
-se há sobreposição;
-se o HDBSCAN marcou ruídos fora das regiões densas;
-se o KMeans está forçando divisões em regiões pouco naturais.
-Por que PCA?
-Porque é simples, rápido, estável e já vem no scikit-learn. Para o nosso objetivo, que é só criar uma visualização comparativa simples, ele é suficiente e não aumenta a complexidade.
-A ressalva importante: o gráfico com PCA é uma projeção aproximada. Ele ajuda na interpretação, mas a comparação quantitativa mais importante continua sendo feita nos embeddings completos, como o silhouette_score.
+* **Redução de Dimensionalidade:** Adotou-se o **PCA** (*Principal Component Analysis*) como técnica de redução estritamente para suporte à camada de visualização. É importante ressaltar que os modelos KMeans e HDBSCAN foram treinados sobre os embeddings cheios de 384 dimensões. O PCA atua reduzindo o espaço vetorial para duas coordenadas ortogonais ($X, Y$) mantendo a máxima variância, viabilizando a plotagem dos gráficos `grafico_kmeans.png` e `grafico_hdbscan.png` para inspeção visual e análise crítica.
 
-4_ Schema_Pydantic: O schema do pydantic, foi selecionados dois, um para a LLM e um para o fallback caso não haja acesso a API do Gemini. O mais relevante é o da API do gemini, que está estruturado como:
+* **Campos do Schema Pydantic:** Estruturamos a classe principal `InsightFinal` contendo uma coleção dinâmica baseada no subschema `ClusterRotulado`. Essa modelagem hierárquica aninhada garante que o Gemini percorra os agrupamentos gerados pelos modelos de ML para preencher os campos estruturados (`modelo`, `cluster_id`, `rotulo`, `caracteristicas_chave`, `insight_acionavel`, `relevancia`), além de consolidar de forma tipada as dores gerais, pontos positivos e as ações estratégicas com um nível de `confianca`.
 
-
-onde temos ele utiliza LLM para trazer os dados dos cluster analisados por eles, as dores dos jogadores como os maiores problema enfrentados, pontos positivos e as ações recomendada pela LLM, além de identificar os principais temas e as palavras que trazem aqueles pontos baseando-se no prompt.
-
-5_ Insight_LLM:
-
+* **Mecanismos de Confiabilidade do Software:** Forçamos o comportamento determinístico da API do Gemini utilizando o parâmetro `response_schema=InsightFinal`. Além disso, implementamos um mecanismo robusto de retentativas automáticas (*Retry com Backoff Exponencial*) para capturar e mitigar instabilidades temporárias da infraestrutura cloud do Google (como erros HTTP **503**), acoplado a uma cláusula de salvaguarda com `try/except (ValidationError, Exception)` que aciona um pipeline de fallback analítico local se houver quebra de contrato nos dados textuais.
