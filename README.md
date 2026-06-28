@@ -32,7 +32,7 @@ Os gráficos comparativos (`grafico_kmeans.png` e `grafico_hdbscan.png`) e o arq
 
 ### 🧠 Uso do KMeans e HDBSCAN simultaneamente pela LLM
 
-Em vez de escolher apenas um algoritmo, erscolhemos enviar os outputs estruturados de ambos os modelos de Machine Learning clássico para o Google Gemini. A abordagem híbrida foi adotada devido à complementaridade matemática de suas forças:
+Em vez de escolher apenas um algoritmo, escolhemos enviar os outputs estruturados de ambos os modelos de Machine Learning clássico para o Google Gemini. A abordagem híbrida foi adotada devido à complementaridade matemática de suas forças:
 
 * **K-Means (Abordagem Panorâmica):** Ao forçar a partição de 100% dos dados em 5 macrotemas, o K-Means atua fornecendo uma visão holística e volumétrica do corpus. Ele garante que a LLM compreenda a totalidade do espaço amostral, mapeando tendências mesmo nas zonas de transição e garantindo representatividade global.
 * **HDBSCAN (Filtro de Densidade e Qualidade):** Ao isolar rigorosamente 83.2% do corpus como ruído sem densidade clara, o HDBSCAN atua como um "curador de elite" para a IA. Ele filtra o spam e as piadas da comunidade gamer, entregando para a LLM apenas 3 núcleos semânticos purificados e incontestáveis de feedback. 
