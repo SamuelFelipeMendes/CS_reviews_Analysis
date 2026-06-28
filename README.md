@@ -20,7 +20,7 @@ O fluxo de dados do projeto segue uma abordagem de engenharia robusta dividida e
 ## 📈 Resultados da Clusterização
 
 * **K-Means:** Forçou o agrupamento total dos dados, mapeando a distribuição volumétrica e os tópicos mais recorrentes do corpus de forma macro.
-* **HDBSCAN:** Atuou cirurgicamente como um filtro de qualidade, identificando que **80.6% do corpus da Steam constituía ruído sem densidade clara** (como spams, artes ASCII e piadas genéricas). O algoritmo isolou com precisão **4 clusters puros** nas extremidades do espaço vetorial, identificando nichos críticos e específicos de reclamações técnicas e comportamentais dos jogadores.
+* **HDBSCAN:** Atuou cirurgicamente como um filtro de qualidade, identificando que **83% do corpus da Steam constituía ruído sem densidade clara** (como spams, artes ASCII e piadas genéricas). O algoritmo isolou com precisão **3 clusters puros** nas extremidades do espaço vetorial, identificando nichos críticos e específicos de reclamações técnicas e comportamentais dos jogadores.
 
 Os gráficos comparativos (`grafico_kmeans.png` e `grafico_hdbscan.png`) e o arquivo final de inteligência de negócios (`relatorio_insights.txt`) são salvos automaticamente no diretório `data/processado/`.
 
