@@ -1,11 +1,37 @@
-# Diário de Decisões do Projeto
+Decisões seguindo o pipeline dos Dados
 
-*   **Modelo de Embedding escolhido:** Optamos pelo `sentence-transformers/all-MiniLM-L12-v2` por apresentar o melhor equilíbrio entre velocidade de inferência e captura semântica em textos informais e curtos, característicos de reviews da Steam.
-  
-*   **Estratégia de Pré-processamento:** Textos de CS2 contêm muitas gírias e artes ASCII. O pré-processamento adotado em preprocessamento.py priorizou a integridade estrutural do corpus antes da vetorização. Realizamos o tratamento de dados ausentes (convertendo eventuais campos nulos em strings limpas) e filtramos registros cujo comprimento de texto fosse igual a zero. Além disso, aproveitamos o metadado nativo da Steam (recomendado) para mapear explicitamente a polaridade de sentimento de cada avaliação em 'positivo' ou 'negativo', gerando uma feature de suporte para a análise subsequente.
+1_ Temática e Corpus: Utilizando um request de API da review de um jogo de uma plataforma chamada Steam, tudo vem a partir de um request feito pela chamada da API. Caso não haja comunicação da API, há uma função de fallback que faz com que o programa utilize um CSV previamente baixado. Por se tratar de uma quantidade muito extensa podemos escolher quantos passamos para o programa, escolhemos 1000.
 
-*   **Medida de Similaridade e Algoritmo:** Comparamos K-Means e HDBSCAN. Decidimos usar a distância do cosseno para os vetores. O HDBSCAN lidou melhor com o formato dos dados por não forçar pontos ruidosos (reviews inúteis) dentro de clusters relevantes.
+2_ Pré-processamento: O pré-processamento foi extremamente simples, como criar uma analise de sentimento de forma artificial, utilizando a recomendação para definir o sentimentos da review foi positivo ou negativo e o tratamento de campo vazios e um filtro de registro com tamanho menor que zero. Devido ao modelo de embedding selecionado, não seria necessário técnicas de lematização, stemming ou StopWords. Como estamos usando um modelo que leva em consideração o contexto, praticamente tudo é relevante.
 
-*   **Campos do Schema Pydantic:** Estruturamos a classe `InsightFinal` contendo campos estratégicos (`cliente`, `problema_de_negocio`, `principais_temas`, `dores_dos_jogadores`, `pontos_positivos`, `acoes_recomendadas` e `confianca`). Essa modelagem garante que a resposta do LLM atenda perfeitamente aos requisitos de negócio demandados por um gestor da Valve.
+3_ Embedding e Modelo: Como escolha mais viável para a vetorização de texto para o embedding e treinamento do modelo, escolhemos o Sentence-Transformer, por causa da captura de texto mais informais e curtos, mas em grandes quantidades. Já a modelagem, seguimos a clusterização. Neste ponto, enviamos dois modelos, Kmeans e o HDBSCAN. Ambos trouxeram dados relevantes e com o silhouette score, avaliamos o mais eficiente no sentido dos agrupamentos.
 
-*   **Mecanismos de Confiabilidade do Software:** Forçamos o comportamento determinístico da API do Gemini utilizando o parâmetro `response_schema=InsightFinal`. Além disso, implementamos uma cláusula de salvaguarda com `try/except ValidationError` para acionar um pipeline de fallback analítico caso a validação do contrato de dados falhasse.
+3.1_ Escolha de modelos e redução de dimensionalidade: 
+
+Usamos PCA só para visualização, não para treinar os clusters.
+Os embeddings do sentence-transformers têm muitas dimensões. Por exemplo, o all-MiniLM-L12-v2 gera vetores com centenas de valores por texto. Isso é ótimo para KMeans e HDBSCAN, mas impossível de visualizar diretamente em um gráfico comum.
+Então a lógica é:
+Embeddings completos -> KMeans/HDBSCAN
+Embeddings completos -> PCA para 2D -> gráficos
+Ou seja, os modelos agrupam usando a representação completa. O PCA só transforma os embeddings em duas coordenadas:
+x, y
+para conseguirmos gerar gráficos como:
+grafico_kmeans.png
+grafico_hdbscan.png
+Por que reduzir dimensionalidade?
+Porque humanos conseguem interpretar visualmente 2D ou 3D, mas não conseguem olhar um vetor de centenas de dimensões. A redução permite ver, de forma aproximada:
+se os clusters parecem separados;
+se há sobreposição;
+se o HDBSCAN marcou ruídos fora das regiões densas;
+se o KMeans está forçando divisões em regiões pouco naturais.
+Por que PCA?
+Porque é simples, rápido, estável e já vem no scikit-learn. Para o nosso objetivo, que é só criar uma visualização comparativa simples, ele é suficiente e não aumenta a complexidade.
+A ressalva importante: o gráfico com PCA é uma projeção aproximada. Ele ajuda na interpretação, mas a comparação quantitativa mais importante continua sendo feita nos embeddings completos, como o silhouette_score.
+
+4_ Schema_Pydantic: O schema do pydantic, foi selecionados dois, um para a LLM e um para o fallback caso não haja acesso a API do Gemini. O mais relevante é o da API do gemini, que está estruturado como:
+
+
+onde temos ele utiliza LLM para trazer os dados dos cluster analisados por eles, as dores dos jogadores como os maiores problema enfrentados, pontos positivos e as ações recomendada pela LLM, além de identificar os principais temas e as palavras que trazem aqueles pontos baseando-se no prompt.
+
+5_ Insight_LLM:
+
