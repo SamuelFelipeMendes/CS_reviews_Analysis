@@ -1,0 +1,117 @@
+{
+  "cliente": "Valve",
+  "problema_de_negocio": "Compreender e mitigar as frustrações dos jogadores relacionadas a trapaceiros, bugs, desempenho e economia de itens, que impactam a satisfação geral, mesmo em um jogo considerado viciante e divertido, a fim de reter e engajar a base de jogadores.",
+  "clusters_rotulados": [
+    {
+      "modelo": "kmeans",
+      "cluster_id": 0,
+      "rotulo": "Amor e Ódio - Questões de Valor e Experiência",
+      "caracteristicas_chave": [
+        "Preço de itens cosméticos",
+        "Experiência Contraditória",
+        "Vício",
+        "Frustração",
+        "Bugs"
+      ],
+      "insight_acionavel": "Este cluster, o maior do KMeans, revela uma profunda ambivalência dos jogadores: amam o jogo, mas se frustram com aspectos como o alto custo de itens cosméticos (ex: facas) ou problemas técnicos que levam a sentimentos extremos ('lixo do caralho', mas ainda jogam). É crucial investigar a percepção de valor dos itens e o impacto das frustrações (cheaters, bugs) na experiência geral para evitar a saída de jogadores. Pode-se considerar a criação de uma linha de itens mais acessível ou bundles com bom custo-benefício.",
+      "relevancia": "Alta"
+    },
+    {
+      "modelo": "kmeans",
+      "cluster_id": 2,
+      "rotulo": "Aprovações Breves e Informais",
+      "caracteristicas_chave": [
+        "Positivo",
+        "Conciso",
+        "Gírias"
+      ],
+      "insight_acionavel": "Apesar de predominantemente positivas, essas avaliações curtas fornecem pouco feedback qualitativo. Incentivar a elaboração pode revelar o que de fato agrada ou desagrada, permitindo ações mais direcionadas. Por exemplo, prompts no jogo perguntando 'O que você mais gosta no jogo?' ou 'O que poderíamos melhorar?'",
+      "relevancia": "Média"
+    },
+    {
+      "modelo": "kmeans",
+      "cluster_id": 1,
+      "rotulo": "Elogios Enfatizados e Genuínos",
+      "caracteristicas_chave": [
+        "Exclamação",
+        "Positivo",
+        "Qualidade Geral",
+        "Divertido"
+      ],
+      "insight_acionavel": "Representa jogadores que genuinamente gostam muito do jogo e o recomendam. Entender e amplificar os elementos que geram essa forte aprovação pode fortalecer a base de fãs e atrair novos jogadores. Utilizar essas avaliações em campanhas de marketing pode ser muito eficaz.",
+      "relevancia": "Média-Alta"
+    },
+    {
+      "modelo": "hdbscan",
+      "cluster_id": 1,
+      "rotulo": "Aprovação Clara e Sem Reservas",
+      "caracteristicas_chave": [
+        "Positivo",
+        "Claro",
+        "Consistente",
+        "Sem negatividade"
+      ],
+      "insight_acionavel": "Este cluster, pequeno mas denso, foca em aprovação direta e entusiástica. São jogadores satisfeitos com a experiência central do jogo. Manter a qualidade básica e focar na estabilidade pode agradar este grupo e transformá-los em defensores da marca.",
+      "relevancia": "Média"
+    },
+    {
+      "modelo": "hdbscan",
+      "cluster_id": 2,
+      "rotulo": "Avaliação Positiva Simples",
+      "caracteristicas_chave": [
+        "Positivo",
+        "Sucinto",
+        "Básico"
+      ],
+      "insight_acionavel": "Indica uma aceitação geral do jogo. Apesar de não detalhadas, essas avaliações confirmam que o jogo atende a um nível mínimo de qualidade para uma parcela dos jogadores. É um bom sinal de que o core do jogo funciona, mas há espaço para aprofundar o entendimento da satisfação.",
+      "relevancia": "Baixa"
+    },
+    {
+      "modelo": "hdbscan",
+      "cluster_id": 0,
+      "rotulo": "Aprovação por Expressão Popular ('Top')",
+      "caracteristicas_chave": [
+        "Positivo",
+        "Popular",
+        "Modismo"
+      ],
+      "insight_acionavel": "Semelhante às aprovações simples, mas usando uma gíria comum. Mostra que o jogo está em sintonia com a linguagem de alguns segmentos de jogadores, transmitindo uma imagem de 'coolness' ou alta qualidade. Pode ser explorado em comunicação direcionada ao público jovem.",
+      "relevancia": "Baixa"
+    }
+  ],
+  "principais_temas": [
+    "Experiência de Jogo Contraditória (Amor e Ódio)",
+    "Problemas de Trapaceiros (Cheaters)",
+    "Questões de Desempenho e Bugs (Hitreg, FPS, Física)",
+    "Comunidade Tóxica e Racista",
+    "Preço e Valor de Itens Cosméticos (Skins, Facas)",
+    "Qualidade Essencial do Jogo (Viciante, Divertido, Bom FPS)"
+  ],
+  "dores_dos_jogadores": [
+    "Frustração e raiva devido à presença de cheaters",
+    "Instabilidade no desempenho (FPS flutuante), problemas de hitreg e física inconsistente",
+    "Comunidade tóxica e racista, impactando negativamente a experiência social",
+    "Sensação de 'relacionamento tóxico' com o jogo, onde a diversão é ofuscada por problemas",
+    "Custo elevado de itens cosméticos (ex: facas), tornando-os inacessíveis para muitos",
+    "Matchmaking inconsistente, resultando em partidas desequilibradas",
+    "Bugs que comprometem a jogabilidade"
+  ],
+  "pontos_positivos": [
+    "Jogo viciante e divertido, mesmo com os problemas",
+    "Considerado um dos melhores jogos de tiro (FPS) do gênero",
+    "Potencial de evolução e melhora rápida para jogadores dedicados",
+    "Gameplay fundamentalmente sólida e gratificante quando funciona corretamente",
+    "Apesar das frustrações, há um forte desejo de continuar jogando ('nunca mais'… mas volta)",
+    "É 'top' e 'muito bom', com aprovação geral da qualidade base"
+  ],
+  "acoes_recomendadas": [
+    "**Combater Trapaceiros Rigorosamente:** Investir pesadamente em sistemas anti-cheat mais robustos e proativos, com banimentos mais rápidos e visíveis para restaurar a confiança dos jogadores na integridade do jogo.",
+    "**Otimizar Desempenho e Corrigir Bugs:** Priorizar a correção de bugs de hitreg, física e otimização para garantir um FPS estável. Comunicar abertamente sobre os progressos nessas áreas.",
+    "**Melhorar a Moderação da Comunidade:** Implementar ferramentas mais eficazes para identificar e punir comportamentos tóxicos e racistas. Fomentar uma cultura de respeito e esporte no jogo e em seus canais oficiais.",
+    "**Reavaliar a Economia de Itens:** Analisar a percepção de valor dos itens cosméticos e considerar a introdução de opções mais acessíveis ou eventos com recompensas justas para ampliar o acesso a itens desejados.",
+    "**Aprimorar o Matchmaking:** Revisar e otimizar o algoritmo de matchmaking para criar partidas mais equilibradas, o que pode reduzir a frustração e aumentar a satisfação geral.",
+    "**Incentivar Feedback Detalhado:** Desenvolver mecanismos no jogo para coletar feedback mais estruturado e detalhado dos jogadores, especialmente daqueles que deixam avaliações curtas, para entender melhor suas motivações e necessidades.",
+    "**Comunicar com Transparência:** Manter os jogadores informados sobre as ações que estão sendo tomadas para resolver os problemas, através de notas de patch detalhadas, blogs de desenvolvimento e comunicação nas redes sociais."
+  ],
+  "confianca": 0.9
+}

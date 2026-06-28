@@ -1,0 +1,110 @@
+{
+  "cliente": "Valve",
+  "problema_de_negocio": "Interpretar avaliações públicas do Counter-Strike 2 em português para identificar dores, elogios e temas relevantes.",
+  "clusters_rotulados": [
+    {
+      "modelo": "kmeans",
+      "cluster_id": 0,
+      "rotulo": "Feedback Misto com Destaque para Economia",
+      "caracteristicas_chave": [
+        "Avaliações curtas e variadas",
+        "Presença de humor ou sarcasmo em algumas avaliações",
+        "Menção específica a preços de itens no jogo (facas/skins)",
+        "Sentimentos ambíguos ou contraditórios em parte do feedback"
+      ],
+      "insight_acionavel": "Investigar a percepção dos jogadores sobre os preços da economia interna do jogo, pois a menção de '343 reais em uma faca' indica um ponto de atrito, mesmo em avaliações com tom geral positivo. O sarcasmo pode indicar insatisfação velada.",
+      "relevancia": "Tema Misto"
+    },
+    {
+      "modelo": "kmeans",
+      "cluster_id": 2,
+      "rotulo": "Avaliações Ultra Curtas e Vagas",
+      "caracteristicas_chave": [
+        "Respostas de uma a poucas palavras (ex: 'f', 'a', 'mto massa')",
+        "Significado genérico ou ambíguo",
+        "Dificuldade de extração de insights detalhados devido à brevidade"
+      ],
+      "insight_acionavel": "Este cluster tem utilidade limitada para insights acionáveis devido à vagueza das avaliações. Considerar a implementação de um campo de feedback mais estruturado ou incentivar avaliações mais detalhadas para capturar informações mais ricas.",
+      "relevancia": "Tema Misto (Dificuldade de Interpretação)"
+    },
+    {
+      "modelo": "kmeans",
+      "cluster_id": 1,
+      "rotulo": "Elogios Entusiásticos e Qualidade Geral",
+      "caracteristicas_chave": [
+        "Linguagem superlativa e entusiasmada (ex: 'muito top', 'bom de maiss', 'MUITO BOM')",
+        "Foco na diversão e prazer geral de jogar",
+        "Consistência na positividade e aprovação do jogo"
+      ],
+      "insight_acionavel": "Utilizar a terminologia e os sentimentos expressos neste cluster em campanhas de marketing e comunicação, reforçando os pontos de 'diversão' e 'qualidade superior' do jogo que geram alto engajamento positivo.",
+      "relevancia": "Elogio"
+    },
+    {
+      "modelo": "hdbscan",
+      "cluster_id": 1,
+      "rotulo": "Aprovação Direta: Muito Bom",
+      "caracteristicas_chave": [
+        "Avaliações curtas e diretas",
+        "Foco exclusivo na expressão 'muito bom'",
+        "100% positivo e consistente"
+      ],
+      "insight_acionavel": "A consistência e clareza deste elogio indicam uma base sólida de satisfação. Manter a qualidade do produto é fundamental para sustentar essa percepção e satisfação dos jogadores.",
+      "relevancia": "Elogio"
+    },
+    {
+      "modelo": "hdbscan",
+      "cluster_id": 2,
+      "rotulo": "Aprovação Direta: Bom",
+      "caracteristicas_chave": [
+        "Avaliações extremamente curtas",
+        "Uso principal da palavra 'bom'",
+        "100% positivo e conciso"
+      ],
+      "insight_acionavel": "Monitorar a evolução deste sentimento. Embora simples, 'bom' é uma base de satisfação que pode ser construída para se tornar 'muito bom'. Focar em pequenas melhorias pode converter essa aprovação básica em entusiasmo.",
+      "relevancia": "Elogio"
+    },
+    {
+      "modelo": "hdbscan",
+      "cluster_id": 0,
+      "rotulo": "Aprovação Direta: Top",
+      "caracteristicas_chave": [
+        "Avaliações muito curtas e diretas",
+        "Uso principal da palavra 'top'",
+        "100% positivo"
+      ],
+      "insight_acionavel": "Semelhante aos outros clusters de elogio direto, 'top' é um indicador claro de satisfação. Continuar priorizando a experiência do usuário para manter essa percepção positiva e elevada do jogo.",
+      "relevancia": "Elogio"
+    }
+  ],
+  "principais_temas": [
+    "Satisfação geral e elogios à jogabilidade e experiência",
+    "Frustração significativa com trapaceiros (cheaters) e a integridade competitiva do jogo",
+    "Problemas técnicos recorrentes (bugs, desempenho, hitreg)",
+    "Questões relacionadas à toxicidade e qualidade da comunidade",
+    "Preocupações com a economia de itens do jogo (preços de skins/facas)",
+    "Existência de feedback curto e ambíguo que dificulta a interpretação aprofundada"
+  ],
+  "dores_dos_jogadores": [
+    "**Trapaceiros (Cheaters):** A presença e o impacto de cheaters são um ponto de dor crucial, comprometendo a experiência justa e competitiva ('muito xiter', 'cheater que enxerga através de três paredes').",
+    "**Problemas Técnicos:** Bugs, hitreg inconsistente, e oscilações de FPS afetam negativamente a jogabilidade ('um bug decide que a física entrou de férias', 'hitreg tira folga', 'FPS brinca de montanha-russa').",
+    "**Comunidade Tóxica:** A comunidade é percebida como tóxica e racista, impactando o ambiente de jogo ('UMA COMUNIDADE MUITO TOXICA E RACISTA!').",
+    "**Custo de Itens:** O alto custo de itens cosméticos (ex: facas) é uma fonte de frustração, mesmo para jogadores que gostam do jogo ('343 reais em um preço minimo de faca é complicado').",
+    "**Matchmaking:** O sistema de pareamento é inconsistente, levando a partidas desbalanceadas ('matchmaking parece uma roleta russa')."
+  ],
+  "pontos_positivos": [
+    "**Qualidade Geral e Diversão:** O jogo é frequentemente elogiado como 'muito bom', 'top' e 'divertido', com a percepção de ser um dos 'melhores do gênero FPS'.",
+    "**Jogabilidade Viciante:** Muitos jogadores o consideram 'viciante' (em um sentido positivo de engajamento) e difícil de parar de jogar.",
+    "**Qualidade do Sistema de Tiro:** O sistema de tiro é destacado como 'perfeito', contribuindo para a experiência FPS central.",
+    "**Potencial de Evolução:** Há uma percepção de que é possível evoluir e ficar bom no jogo rapidamente com dedicação."
+  ],
+  "acoes_recomendadas": [
+    "**1. Intensificar o Combate a Trapaceiros:** Priorizar e escalar as soluções anti-cheat, comunicando os progressos aos jogadores para restaurar a confiança na integridade competitiva.",
+    "**2. Otimização Técnica Contínua:** Investir recursos significativos na correção de bugs, otimização de desempenho (FPS) e garantia da consistência do hitreg, que são dores fundamentais.",
+    "**3. Reforço da Moderação da Comunidade:** Desenvolver e aplicar políticas mais eficazes contra toxicidade e racismo, utilizando ferramentas de moderação mais robustas para melhorar o ambiente social do jogo.",
+    "**4. Avaliação da Economia de Itens:** Realizar uma análise detalhada sobre a percepção de valor e preço dos itens in-game, especialmente os de alto valor como facas/skins, para entender seu impacto na satisfação e engajamento do jogador.",
+    "**5. Otimização do Matchmaking:** Investigar e otimizar o algoritmo de matchmaking para garantir uma experiência mais balanceada e justa nas partidas.",
+    "**6. Comunicação dos Pontos Fortes:** Utilizar o feedback positivo e os termos como 'divertido', 'top' e 'muito bom' em campanhas de marketing e comunicação para reforçar os aspectos mais apreciados do jogo.",
+    "**7. Incentivo a Feedback Qualitativo:** Explorar formas de incentivar avaliações mais descritivas (por exemplo, com prompts ou categorias), especialmente para reviews muito curtos, a fim de obter insights mais aprofundados."
+  ],
+  "confianca": 0.7
+}
