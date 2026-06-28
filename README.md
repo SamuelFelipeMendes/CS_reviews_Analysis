@@ -71,3 +71,5 @@ Em vez de escolher apenas um algoritmo, escolhemos enviar os outputs estruturado
    ```env
       GEMINI_API='sua_chave_aqui'
    ```
+
+ | Importante ressaltar que os teste e insights ja gerados foram aqueles gerados anteriormente, podendo refletir um resultado de algo que ja foi resolvido. Mantemos os registros de insight para motivos de comparação conforme fomos montando o código. 
