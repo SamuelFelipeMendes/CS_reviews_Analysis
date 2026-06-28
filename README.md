@@ -2,7 +2,7 @@
 
 Este projeto realiza uma mineração de textos automatizada sobre as avaliações (reviews) do jogo Counter-Strike 2 (CS2) coletadas diretamente da API da Steam. A arquitetura combina algoritmos clássicos de aprendizado não supervisionado (Machine Learning) com modelos de linguagem de grande porte (LLMs) para gerar insights de negócio estruturados e acionáveis para a Valve.
 ---
-Aluno:
+# Alunos:
       Samuel Mendes
       Victor Ferreira
 
