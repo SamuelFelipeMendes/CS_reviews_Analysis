@@ -30,6 +30,17 @@ Os gráficos comparativos (`grafico_kmeans.png` e `grafico_hdbscan.png`) e o arq
 
 ---
 
+### 🧠 Uso do KMeans e HDBSCAN simultaneamente pela LLM?
+
+Em vez de escolher apenas um algoritmo, erscolhemos enviar os outputs estruturados de ambos os modelos de Machine Learning clássico para o Google Gemini. A abordagem híbrida foi adotada devido à complementaridade matemática de suas forças:
+
+* **K-Means (Abordagem Panorâmica):** Ao forçar a partição de 100% dos dados em 5 macrotemas, o K-Means atua fornecendo uma visão holística e volumétrica do corpus. Ele garante que a LLM compreenda a totalidade do espaço amostral, mapeando tendências mesmo nas zonas de transição e garantindo representatividade global.
+* **HDBSCAN (Filtro de Densidade e Qualidade):** Ao isolar rigorosamente 83.2% do corpus como ruído sem densidade clara, o HDBSCAN atua como um "curador de elite" para a IA. Ele filtra o spam e as piadas da comunidade gamer, entregando para a LLM apenas 3 núcleos semânticos purificados e incontestáveis de feedback. 
+
+**Ganhos para o negócio:** A união de ambos evita que a LLM alucine com dados dispersos (graças ao HDBSCAN) e impede que ela perca o contexto do panorama geral do ecossistema de avaliações (graças ao K-Means). Isso otimiza o consumo de tokens e enriquece a robustez dos insights finais gerados para a Valve.
+
+---
+
 ## 💰 Estimativa de Custos Previstos (Pipeline de 1.000 Elementos)
 
 *Premissas para o cálculo:* Consideramos a sumarização de clusters de texto contendo, em média, 200 tokens de input (contexto dos clusters + prompt) e gerando 50 tokens de output (JSON estruturado final do Pydantic) por ciclo de chamada. Total estimado: 200.000 tokens de Input e 50.000 tokens de Output para 1.000 registros avaliados.
