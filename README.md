@@ -60,6 +60,7 @@ Em vez de escolher apenas um algoritmo, escolhemos enviar os outputs estruturado
 3. Instale as dependências obrigatórias:
    ```bash
    pip install -r requirements.txt
+   ```
 
    ```bash
       python main.py
