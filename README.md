@@ -61,14 +61,12 @@ Em vez de escolher apenas um algoritmo, escolhemos enviar os outputs estruturado
    ```bash
    pip install -r requirements.txt
 
-## Como executar
+   ```bash
+      python main.py
+   ```
 
-```bash
-python main.py
-```
+   Para usar Gemini nos insights, crie um arquivo `.env` na pasta de config do projeto:
 
-Para usar Gemini nos insights, crie um arquivo `.env` na pasta de config do projeto:
-
-```env
-GEMINI_API='sua_chave_aqui'
-```
+   ```env
+      GEMINI_API='sua_chave_aqui'
+   ```
