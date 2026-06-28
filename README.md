@@ -54,9 +54,9 @@ Os gráficos comparativos (`grafico_kmeans.png` e `grafico_hdbscan.png`) e o arq
 python main.py
 ```
 
-Para usar Gemini nos insights, crie um arquivo `.env` na raiz do projeto:
+Para usar Gemini nos insights, crie um arquivo `.env` na pasta de config do projeto:
 
 ```env
-GEMINI_API_KEY=sua_chave_aqui
+GEMINI_API=sua_chave_aqui
 ```
 
