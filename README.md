@@ -24,7 +24,7 @@ O fluxo de dados do projeto segue uma abordagem de engenharia robusta dividida e
 ## 📈 Resultados da Clusterização
 
 * **K-Means:** Mapeou de forma geométrica e global a distribuição volumétrica do corpus, dividindo as avaliações de maneira uniforme em **5 macrotemas** de discussão.
-* **HDBSCAN:** Atuou cirurgicamente como um filtro de qualidade para o LLM, identificando de forma rigorosa que **83.2% do corpus da Steam constituía ruído sem densidade clara** (mensagens de spam, artes ASCII e piadas repetitivas). De forma orgânica, o algoritmo isolou com precisão exatamente **5 clusters estáveis** nas extremidades de densidade.
+* **HDBSCAN:** Atuou cirurgicamente como um filtro de qualidade para o LLM, identificando de forma rigorosa que **83.2% do corpus da Steam constituía ruído sem densidade clara** (mensagens de spam, artes ASCII e piadas repetitivas). De forma orgânica, o algoritmo isolou com precisão exatamente **3 clusters estáveis** nas extremidades de densidade.
 
 O fato de ambos os modelos convergirem de formas diferentes para exatamente 5 agrupamentos válidos confirma matematicamente a presença de 5 núcleos principais de interesse/reclamações no universo de dados analisado.
 
