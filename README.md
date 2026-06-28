@@ -1,6 +1,10 @@
 # Análise de Avaliações do CS2 com Clusterização e LLMs 🚀
 
 Este projeto realiza uma mineração de textos automatizada sobre as avaliações (reviews) do jogo Counter-Strike 2 (CS2) coletadas diretamente da API da Steam. A arquitetura combina algoritmos clássicos de aprendizado não supervisionado (Machine Learning) com modelos de linguagem de grande porte (LLMs) para gerar insights de negócio estruturados e acionáveis para a Valve.
+---
+Aluno:
+      Samuel Mendes
+      Victor Ferreira
 
 ---
 
@@ -40,12 +44,22 @@ Os gráficos comparativos (`grafico_kmeans.png` e `grafico_hdbscan.png`) e o arq
 
 *Conclusão Econômica:* Os modelos da família *Flash* mostram-se ideais para a execução deste pipeline em larga escala, entregando baixíssimo custo e tempo de resposta otimizado, enquanto a variante *Pro* fica reservada para auditorias semânticas complexas.
 
----
-
 ## 🛠️ Como Executar o Projeto
 
 1. Certifique-se de ter o Python 3.10+ instalado.
-2. Ative o seu gerenciador ou ambiente virtual.
-3. Instale as dependências obrigatórias via pyproject.toml ou pip:
+2. Crie e ative o seu ambiente virtual (`venv`).
+3. Instale as dependências obrigatórias:
    ```bash
-   pip install .
+   pip install -r requirements.txt
+
+## Como executar
+
+```bash
+python main.py
+```
+
+Para usar Gemini nos insights, crie um arquivo `.env` na pasta de config do projeto:
+
+```env
+GEMINI_API='sua_chave_aqui'
+```
