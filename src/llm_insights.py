@@ -108,18 +108,25 @@ def gerar_insights(df, resultados):
     Amostra de avaliacoes:
     {amostra}
     """
-    client = genai.Client(api_key=api_key)
-    modelo = os.getenv("GEMINI_MODEL", GEMINI_MODEL)
-    resposta = client.models.generate_content(
-        model=modelo,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            response_schema=InsightFinal,
-        ),
-    )
-
     try:
-        return _validar_resposta_gemini(resposta)
-    except ValidationError:
+        client = genai.Client(api_key=api_key)
+        modelo = os.getenv("GEMINI_MODEL", GEMINI_MODEL)
+        
+        resposta = client.models.generate_content(
+            model=modelo,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                response_schema=InsightFinal,
+            ),
+        )
+        
+        # Converte a string JSON retornada pelo Gemini diretamente no Schema do Pydantic
+        import json
+        dados_json = json.loads(resposta.text)
+        return InsightFinal(**dados_json)
+
+    except (ValidationError, Exception) as e:
+        print(f"\n⚠️ [Aviso] Falha na extração ou validação do LLM: {e}")
+        print("🔧 Acionando o pipeline de fallback analítico sem LLM...\n")
         return _fallback_sem_llm(df, resultados)
