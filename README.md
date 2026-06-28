@@ -30,7 +30,7 @@ Os gráficos comparativos (`grafico_kmeans.png` e `grafico_hdbscan.png`) e o arq
 
 ---
 
-### 🧠 Uso do KMeans e HDBSCAN simultaneamente pela LLM?
+### 🧠 Uso do KMeans e HDBSCAN simultaneamente pela LLM
 
 Em vez de escolher apenas um algoritmo, erscolhemos enviar os outputs estruturados de ambos os modelos de Machine Learning clássico para o Google Gemini. A abordagem híbrida foi adotada devido à complementaridade matemática de suas forças:
 
